@@ -1,16 +1,36 @@
 import json
+import gpt
+
+return_headers = {
+    # CORS
+    'Access-Control-Allow-Headers': 'Content-Type',
+    # 'Access-Control-Allow-Origin': 'http://www.ai-tweet.com',
+    'Access-Control-Allow-Origin': 'http://localhost:3001',
+    'Access-Control-Allow-Methods': 'OPTIONS,POST',
+    # Rest of headers
+    'content-type': 'application/json'
+}
 
 
 def lambda_handler(event, context):
-    print(event)
+    # print(event)
+    try:
+        body = json.loads(event['body'])
+        prediction = gpt.make_prediction(body['username'])
 
-    payload = {
-        "text": "Thanks for asking, but I'm not making predictions... yet..."
-    }
+        payload = {
+            "text": prediction
+        }
+        status = 201
+    except ValueError:
+        payload = {"error": "Invalid format"}
+        status = 400
+    except Exception:
+        payload = {"error": "Unknown error"}
+        status = 500
+
     return {
-        'statusCode': 201,
-        'headers': {
-            'content-type': 'application/json'
-        },
+        'statusCode': status,
+        'headers': return_headers,
         'body': json.dumps(payload)
     }
