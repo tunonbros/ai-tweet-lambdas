@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  ai-tweet-generate
+
+  Sample SAM Template for ai-tweet-generate
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 10
+
+Resources:
+  GenerateTweetFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: generate_tweet/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        GenerateTweet:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /ai-tweet-generate
+            Method: post
+      Environment:
+        Variables:
+          TEST_1: aaa
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  GenerateTweetApi:
+    Description: "API Gateway endpoint URL for Prod stage for generate tweet function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  GenerateTweetFunction:
+    Description: "Generate tweet Lambda Function ARN"
+    Value: !GetAtt GenerateTweetFunction.Arn
+  GenerateTweetFunctionIamRole:
+    Description: "Implicit IAM Role created for generate tweet function"
+    Value: !GetAtt GenerateTweetFunctionRole.Arn
