@@ -25,7 +25,8 @@ Resources:
             Method: post
       Environment:
         Variables:
-          TEST_1: aaa
+          DOMAIN: a
+          OPENAI_KEY: a
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
