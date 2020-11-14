@@ -27,6 +27,21 @@ Resources:
         Variables:
           DOMAIN: a
           OPENAI_KEY: a
+  SharedGetFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: shared/
+      Handler: app.get
+      Runtime: python3.8
+      Events:
+        GenerateTweet:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /shared
+            Method: get
+      Environment:
+        Variables:
+          DOMAIN: a
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
@@ -41,3 +56,6 @@ Outputs:
   GenerateTweetFunctionIamRole:
     Description: "Implicit IAM Role created for generate tweet function"
     Value: !GetAtt GenerateTweetFunctionRole.Arn
+  SharedGetFunction:
+    Description: "Get shared tweet Lambda Function ARN"
+    Value: !GetAtt SharedGetFunction.Arn

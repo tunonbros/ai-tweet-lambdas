@@ -1,5 +1,4 @@
 import json
-import gpt
 import os
 
 # DON'T FORGET TO FILL ENVIRONMENT VARIABLES WHEN RELEASING
@@ -8,22 +7,20 @@ return_headers = {
     # CORS
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Origin': os.environ['DOMAIN'],
-    'Access-Control-Allow-Methods': 'OPTIONS,POST',
+    'Access-Control-Allow-Methods': 'OPTIONS,GET',
     # Rest of headers
     'content-type': 'application/json'
 }
 
 
-def lambda_handler(event, context):
-    # print(event)
+def get(event, context):
+    print(event)
     try:
-        body = json.loads(event['body'])
-        prediction = gpt.make_prediction(body['username'])
-
         payload = {
-            "text": prediction
+            "username": "Juanito",
+            "text": "This is so funny I had to share it"
         }
-        status = 201
+        status = 200
     except (ValueError, TypeError):
         payload = {"error": "Invalid format"}
         status = 400

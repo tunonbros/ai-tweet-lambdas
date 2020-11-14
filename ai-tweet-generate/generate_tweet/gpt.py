@@ -1,7 +1,7 @@
 import os
 import openai
 
-openai.api_key = os.getevn('OPENAI_KEY')
+openai.api_key = os.environ['OPENAI_KEY']
 
 
 def generate_prompt(username):

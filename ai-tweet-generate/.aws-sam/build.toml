@@ -5,3 +5,8 @@
 codeuri = "generate_tweet/"
 runtime = "python3.8"
 functions = ["GenerateTweetFunction"]
+
+[build_definitions.cf586fcb-7406-44d7-ba2d-5828216e7dba]
+codeuri = "shared/"
+runtime = "python3.8"
+functions = ["SharedGetFunction"]
