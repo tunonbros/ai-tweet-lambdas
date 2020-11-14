@@ -14,8 +14,8 @@ Resources:
   GenerateTweetFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: generate_tweet/
-      Handler: app.lambda_handler
+      CodeUri: functions/
+      Handler: generate-tweet.post
       Runtime: python3.8
       Events:
         GenerateTweet:
@@ -30,14 +30,14 @@ Resources:
   SharedGetFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: shared/
-      Handler: app.get
+      CodeUri: functions/
+      Handler: shared.get
       Runtime: python3.8
       Events:
         GenerateTweet:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /shared
+            Path: /shared/{tweetId}
             Method: get
       Environment:
         Variables:
