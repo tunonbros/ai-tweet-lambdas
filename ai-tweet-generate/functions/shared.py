@@ -3,7 +3,7 @@ from libs import handler
 
 
 def get_shared(event):
-    tweet_id = event['pathParameters'].get('tweetId', None)
+    tweet_id = event['pathParameters']['tweetId']
     return {
         "username": f"Juanito: {tweet_id}",
         "text": "This is so funny I had to share it"
