@@ -7,7 +7,7 @@ def generate_tweet(event):
     body = json.loads(event['body'])
     prediction = gpt.make_prediction(body['username'])
     return {
-        "text": prediction
+        "tweet": prediction
     }
 
 

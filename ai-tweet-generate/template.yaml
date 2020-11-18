@@ -42,6 +42,26 @@ Resources:
       Environment:
         Variables:
           DOMAIN: a
+          DB_USER: a
+          DB_PASSWORD: a
+          DB_HOST: a
+  DBHandlerFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: functions/
+      Handler: handle_db.lambda_handler
+      Runtime: python3.8
+      Events:
+        GenerateTweet:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /dbhandler
+            Method: get
+      Environment:
+        Variables:
+          DB_USER: a
+          DB_PASSWORD: a
+          DB_HOST: a
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
@@ -59,3 +79,6 @@ Outputs:
   SharedGetFunction:
     Description: "Get shared tweet Lambda Function ARN"
     Value: !GetAtt SharedGetFunction.Arn
+  DBHandlerFunction:
+    Description: "Create tables"
+    Value: !GetAtt DBHandlerFunction.Arn

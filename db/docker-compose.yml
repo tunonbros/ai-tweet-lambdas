@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+    postgres:
+      image: postgres:12.5
+      hostname: postgres
+      environment:
+        - POSTGRES_USER=tunonbros
+        - POSTGRES_PASSWORD=tunonbros
+      volumes:
+        - ./data/postgresql:/var/lib/postgresql/data
+      ports:
+        - 5432:5432
