@@ -2,7 +2,9 @@ import os
 
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, String, MetaData, Integer, DateTime
-from sqlalchemy.sql import func, select
+from sqlalchemy.sql import func, select, update
+
+from short_url import UrlEncoder
 
 
 class TweetsDB:
@@ -12,6 +14,7 @@ class TweetsDB:
         self.host = host or os.environ['DB_HOST']
         self.port = port or 5432
         self.database = database or 'aitweet'
+        self.id_generator = UrlEncoder(alphabet='UsGHgtbu7PBxLq3KZpThmy2NSA8EC4MzJdcWXV6wanrkjefYRF5DQv9')
 
         db_string = "postgres://{}:{}@{}:{}/{}".format(
             self.user,
@@ -42,12 +45,28 @@ class TweetsDB:
         return True
 
     def get_tweet(self, tweet_id):
-        s = select([self.tweets]).where(self.tweets.c.tweet_id == tweet_id)
+        # Let's fetch by id, instead of by tweet_id (just for fun)
+        id_num = self.id_generator.decode_url(tweet_id)
+        s = select([self.tweets]).where(self.tweets.c.id == id_num)
+
+        # Update views count
+        u = update(self.tweets, values={self.tweets.c.views: self.tweets.c.views + 1})
+        self.conn.execute(u)
+
+        # Return select result
         return self.conn.execute(s).fetchone()
 
     def insert_tweet(self, tweet):
-        ins = self.tweets.insert()
-        self.conn.execute(ins, **tweet)
+        # Insert
+        ins = self.tweets.insert().returning(self.tweets.c.id)
+        res = self.conn.execute(ins, **tweet)
+        id_num = res.fetchone()[self.tweets.c.id]
+
+        # Calculate tweet_id
+        return self.id_generator.encode_url(id_num)
+
+        # TODO: Update
+        # upd = self.tweets.update().where(self.tweets.c.id == id_num).values(tweet_id=tweet_id)
 
 
 tweets_db = TweetsDB()

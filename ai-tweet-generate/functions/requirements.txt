@@ -3,3 +3,4 @@ openai
 searchtweets
 SQLAlchemy
 psycopg2_binary
+short_url

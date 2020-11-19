@@ -45,6 +45,24 @@ Resources:
           DB_USER: a
           DB_PASSWORD: a
           DB_HOST: a
+  SharedPostFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: functions/
+      Handler: shared.post
+      Runtime: python3.8
+      Events:
+        GenerateTweet:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /shared
+            Method: post
+      Environment:
+        Variables:
+          DOMAIN: a
+          DB_USER: a
+          DB_PASSWORD: a
+          DB_HOST: a
   DBHandlerFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -79,6 +97,9 @@ Outputs:
   SharedGetFunction:
     Description: "Get shared tweet Lambda Function ARN"
     Value: !GetAtt SharedGetFunction.Arn
+  SharedPostFunction:
+    Description: "Post shared tweet Lambda Function ARN"
+    Value: !GetAtt SharedPostFunction.Arn
   DBHandlerFunction:
     Description: "Create tables"
     Value: !GetAtt DBHandlerFunction.Arn

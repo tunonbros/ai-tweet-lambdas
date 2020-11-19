@@ -4,13 +4,13 @@ from libs.db import tweets_db
 
 
 def post_shared(event):
-    # tweets_db.insert_tweet({
-    #     'tweet': 'You found a testing tweet. Easy, huh? Congratulations. There is no reward for it, though.',
-    #     'username': 'betatester',
-    #     'views': 0,
-    #     'tweet_id': 'aaaaaaaaaa'
-    # })
-    pass
+    body = json.loads(event['body'])
+    tweet_id = tweets_db.insert_tweet({
+        'tweet': body['tweet'],
+        'username': body['username'],
+        'views': 0
+    })
+    return tweet_id
 
 
 def get_shared(event):
@@ -26,4 +26,14 @@ def get(event, context):
         'statusCode': status,
         'headers': handler.get_headers(),
         'body': json.dumps(payload, default=str)
+    }
+
+
+def post(event, context):
+    payload, status = handler.wrap_function(post_shared, event, 201)
+
+    return {
+        'statusCode': status,
+        'headers': handler.get_headers(),
+        'body': json.dumps(payload)
     }

@@ -9,6 +9,9 @@ def wrap_function(func, event, success_status=200):
     except (ValueError, TypeError):
         payload = {"error": "Invalid format"}
         status = 400
+    except AttributeError:
+        payload = {"error": "Not found"}
+        status = 404
     except Exception as e:
         print(f"ERROR - unknown exception: {type(e)} - {str(e)}")
         payload = {"error": "Unknown error"}
