@@ -10,7 +10,9 @@ def post_shared(event):
         'username': body['username'],
         'views': 0
     })
-    return tweet_id
+    return {
+        'tweetId': tweet_id
+    }
 
 
 def get_shared(event):
