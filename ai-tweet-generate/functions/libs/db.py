@@ -45,12 +45,12 @@ class TweetsDB:
         return True
 
     def get_tweet(self, tweet_id):
-        # Let's fetch by id, instead of by tweet_id (just for fun)
+        # Let's fetch by id, instead of by tweet_id (just for fun, and maybe eficiency)
         id_num = self.id_generator.decode_url(tweet_id)
         s = select([self.tweets]).where(self.tweets.c.id == id_num)
 
         # Update views count
-        u = update(self.tweets, values={self.tweets.c.views: self.tweets.c.views + 1})
+        u = update(self.tweets, values={self.tweets.c.views: self.tweets.c.views + 1}).where(self.tweets.c.id == id_num)
         self.conn.execute(u)
 
         # Return select result
@@ -63,10 +63,13 @@ class TweetsDB:
         id_num = res.fetchone()[self.tweets.c.id]
 
         # Calculate tweet_id
-        return self.id_generator.encode_url(id_num)
+        tweet_id = self.id_generator.encode_url(id_num)
 
-        # TODO: Update
-        # upd = self.tweets.update().where(self.tweets.c.id == id_num).values(tweet_id=tweet_id)
+        # Update
+        upd = self.tweets.update().where(self.tweets.c.id == id_num).values(tweet_id=tweet_id)
+        self.conn.execute(upd)
+
+        return tweet_id
 
 
 tweets_db = TweetsDB()

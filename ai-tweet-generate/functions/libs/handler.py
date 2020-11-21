@@ -30,3 +30,25 @@ def get_headers(method='GET'):
         # Rest of headers
         'content-type': 'application/json'
     }
+
+
+def to_camel_case(st):
+    output = ''.join(x for x in st.replace('_', ' ').title() if x.isalnum())
+    return output[0].lower() + output[1:]
+
+
+def split_keys(data):
+    for key, value in data:
+        if isinstance(key, str):
+            yield to_camel_case(key), key, value
+        elif isinstance(key, dict):
+            yield key.items()[0] + value
+        else:
+            raise Exception("Key not serializable")
+
+
+def serialize(data, keys=None):
+    if not keys:
+        return dict(data)
+
+    return {k_front: v for k_front, k_back, v in split_keys(data) if k_back in keys}

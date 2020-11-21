@@ -15,10 +15,14 @@ def post_shared(event):
     }
 
 
+# Don't return everything from database, just these keys
+return_keys = ['tweet', 'username']
+
+
 def get_shared(event):
     tweet_id = event['pathParameters']['tweetId']
     tweet = tweets_db.get_tweet(tweet_id)
-    return dict(tweet.items())
+    return handler.serialize(tweet.items(), return_keys)
 
 
 def get(event, context):
