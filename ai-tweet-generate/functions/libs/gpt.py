@@ -4,19 +4,18 @@ import openai
 openai.api_key = os.environ['OPENAI_KEY']
 
 
-def generate_prompt(username):
-    return f"""
+def generate_prompt(username, tweets):
+    s = f"""
 Twitter is a platform where users share text messages up to 140 characters long.
-These are some example tweets from an unknown user:
--> I'm so happy to see the sun rising up this morning #BeautifulMorning
--> I have mixed feelings about the ending of How I met your mother
 
-The following are some examples of what {username} would post on Twitter:
-->"""
+The following are some examples of what {username} uses to post on Twitter:
+-> """
+    tweets_str = "\n-> ".join(tweets)
+    return s + tweets_str + "\n->"
 
 
-def make_prediction(username):
-    prompt = generate_prompt(username)
+def make_prediction(username, tweets):
+    prompt = generate_prompt(username, tweets)
     print(prompt)
     response = openai.Completion.create(engine="davinci", prompt=prompt, max_tokens=80, stop='->')
     print(response)

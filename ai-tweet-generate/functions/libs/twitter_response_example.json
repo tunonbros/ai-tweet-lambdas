@@ -1,0 +1,281 @@
+[
+  {
+      "created_at": "Thu May 24 14:56:42 +0000 2018",
+      "id": 999665497359732739,
+      "id_str": "999665497359732739",
+      "text": "@RAEinforma \u00bfEs posible acceder a las entradas del diccionario en l\u00ednea de la RAE por orden alfab\u00e9tico? \u00bfexiste alg\u2026 https://t.co/7ScM6IySXq",
+      "truncated": true,
+      "entities": {
+          "hashtags": [],
+          "symbols": [],
+          "user_mentions": [
+              {
+                  "screen_name": "RAEinforma",
+                  "name": "RAE",
+                  "id": 350411337,
+                  "id_str": "350411337",
+                  "indices": [
+                      0,
+                      11
+                  ]
+              }
+          ],
+          "urls": [
+              {
+                  "url": "https://t.co/7ScM6IySXq",
+                  "expanded_url": "https://twitter.com/i/web/status/999665497359732739",
+                  "display_url": "twitter.com/i/web/status/9\u2026",
+                  "indices": [
+                      117,
+                      140
+                  ]
+              }
+          ]
+      },
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": 350411337,
+      "in_reply_to_user_id_str": "350411337",
+      "in_reply_to_screen_name": "RAEinforma",
+      "user": {
+          "id": 344291527,
+          "id_str": "344291527"
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "es"
+  },
+  {
+      "created_at": "Fri Jul 26 12:37:05 +0000 2013",
+      "id": 360740555212328962,
+      "id_str": "360740555212328962",
+      "text": "@trupill yo llamaba \"educaci\u00f3n musical\" a aprender las notas y todo eso. Eso es cuesti\u00f3n de gustos. De gustos buenos :P",
+      "truncated": false,
+      "entities": {
+          "hashtags": [],
+          "symbols": [],
+          "user_mentions": [
+              {
+                  "screen_name": "trupill",
+                  "name": "Alejandro Serrano, Haskeller",
+                  "id": 78353800,
+                  "id_str": "78353800",
+                  "indices": [
+                      0,
+                      8
+                  ]
+              }
+          ],
+          "urls": []
+      },
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "in_reply_to_status_id": 360678494977536000,
+      "in_reply_to_status_id_str": "360678494977536000",
+      "in_reply_to_user_id": 78353800,
+      "in_reply_to_user_id_str": "78353800",
+      "in_reply_to_screen_name": "trupill",
+      "user": {
+          "id": 344291527,
+          "id_str": "344291527"
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "es"
+  },
+  {
+      "created_at": "Fri Jan 11 18:29:43 +0000 2013",
+      "id": 289801279151169536,
+      "id_str": "289801279151169536",
+      "text": "@AngelSollozzo T\u00fa si que eres un crack! muchas gracias primo! :)",
+      "truncated": false,
+      "entities": {
+          "hashtags": [],
+          "symbols": [],
+          "user_mentions": [
+              {
+                  "screen_name": "AngelSollozzo",
+                  "name": "AngelSollozzo",
+                  "id": 1078332152188682241,
+                  "id_str": "1078332152188682241",
+                  "indices": [
+                      0,
+                      14
+                  ]
+              }
+          ],
+          "urls": []
+      },
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "in_reply_to_status_id": 289790112840155136,
+      "in_reply_to_status_id_str": "289790112840155136",
+      "in_reply_to_user_id": 253031541,
+      "in_reply_to_user_id_str": "253031541",
+      "in_reply_to_screen_name": "AngelSollozzo12",
+      "user": {
+          "id": 344291527,
+          "id_str": "344291527"
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "es"
+  },
+  {
+      "created_at": "Wed Dec 19 18:02:56 +0000 2012",
+      "id": 281459616775286784,
+      "id_str": "281459616775286784",
+      "text": "RT @sotoka87: Organizando un s\u00e1bado que pasar\u00e1 a la historia del #Rodillo",
+      "truncated": false,
+      "entities": {
+          "hashtags": [
+              {
+                  "text": "Rodillo",
+                  "indices": [
+                      65,
+                      73
+                  ]
+              }
+          ],
+          "symbols": [],
+          "user_mentions": [
+              {
+                  "screen_name": "sotoka87",
+                  "name": "sotoka",
+                  "id": 470255763,
+                  "id_str": "470255763",
+                  "indices": [
+                      3,
+                      12
+                  ]
+              }
+          ],
+          "urls": []
+      },
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+          "id": 344291527,
+          "id_str": "344291527"
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweeted_status": {
+          "created_at": "Wed Dec 19 13:37:17 +0000 2012",
+          "id": 281392762753019904,
+          "id_str": "281392762753019904",
+          "text": "Organizando un s\u00e1bado que pasar\u00e1 a la historia del #Rodillo",
+          "truncated": false,
+          "entities": {
+              "hashtags": [
+                  {
+                      "text": "Rodillo",
+                      "indices": [
+                          51,
+                          59
+                      ]
+                  }
+              ],
+              "symbols": [],
+              "user_mentions": [],
+              "urls": []
+          },
+          "source": "<a href=\"http://www.tweetcaster.com\" rel=\"nofollow\">TweetCaster for Android</a>",
+          "in_reply_to_status_id": null,
+          "in_reply_to_status_id_str": null,
+          "in_reply_to_user_id": null,
+          "in_reply_to_user_id_str": null,
+          "in_reply_to_screen_name": null,
+          "user": {
+              "id": 470255763,
+              "id_str": "470255763"
+          },
+          "geo": null,
+          "coordinates": null,
+          "place": null,
+          "contributors": null,
+          "is_quote_status": false,
+          "retweet_count": 1,
+          "favorite_count": 0,
+          "favorited": false,
+          "retweeted": false,
+          "lang": "es"
+      },
+      "is_quote_status": false,
+      "retweet_count": 1,
+      "favorite_count": 0,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "es"
+  },
+  {
+      "created_at": "Thu Nov 01 11:03:55 +0000 2012",
+      "id": 263959552012218369,
+      "id_str": "263959552012218369",
+      "text": "Misfits is back with the 4th season! @trupill :)",
+      "truncated": false,
+      "entities": {
+          "hashtags": [],
+          "symbols": [],
+          "user_mentions": [
+              {
+                  "screen_name": "trupill",
+                  "name": "Alejandro Serrano, Haskeller",
+                  "id": 78353800,
+                  "id_str": "78353800",
+                  "indices": [
+                      37,
+                      45
+                  ]
+              }
+          ],
+          "urls": []
+      },
+      "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+          "id": 344291527,
+          "id_str": "344291527"
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "is_quote_status": false,
+      "retweet_count": 1,
+      "favorite_count": 1,
+      "favorited": false,
+      "retweeted": false,
+      "lang": "en"
+  }
+]

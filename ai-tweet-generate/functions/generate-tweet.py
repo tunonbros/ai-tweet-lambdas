@@ -1,11 +1,14 @@
 import json
 from libs import gpt
 from libs import handler
+from libs import twitter
 
 
 def generate_tweet(event):
     body = json.loads(event['body'])
-    prediction = gpt.make_prediction(body['username'])
+    username = body['username']
+    tweets = twitter.get_tweets(username)
+    prediction = gpt.make_prediction(username, tweets)
     return {
         "tweet": prediction
     }
