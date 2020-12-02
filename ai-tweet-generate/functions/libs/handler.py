@@ -6,8 +6,7 @@ def wrap_function(func, event, success_status=200):
     try:
         payload = func(event)
         status = success_status
-    except (ValueError, TypeError) as e:
-        print(str(e))
+    except (ValueError, TypeError):
         payload = {"error": "Invalid format"}
         status = 400
     except AttributeError:

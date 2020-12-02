@@ -6,11 +6,12 @@ from libs import twitter
 
 def generate_tweet(event):
     body = json.loads(event['body'])
-    username = body['username']
+    username = twitter.strip_username(body['username'])
     tweets = twitter.get_tweets(username)
     prediction = gpt.make_prediction(username, tweets)
     return {
-        "tweet": prediction
+        "tweet": prediction,
+        "username": username
     }
 
 

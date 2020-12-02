@@ -1,6 +1,7 @@
 import requests
-import os
 import json
+import os
+import re
 
 
 def get_headers():
@@ -22,3 +23,11 @@ def get_tweets(username):
     timeline = [t['text'] for t in get_timeline(username)]
     print(json.dumps(timeline, indent=4))
     return timeline
+
+
+def strip_username(username):
+    pattern = re.compile('[^A-Za-z0-9_]+', re.UNICODE)
+    stripped_username = pattern.sub('', username)
+    if len(stripped_username) > 15 or len(stripped_username) < 4:
+        raise Exception("Invalid username")
+    return stripped_username
