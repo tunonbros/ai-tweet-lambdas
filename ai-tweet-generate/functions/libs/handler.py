@@ -1,5 +1,6 @@
 
 import os
+from .twitter import InvalidUsername, NoRecentTweets
 
 
 def wrap_function(func, event, success_status=200):
@@ -12,6 +13,12 @@ def wrap_function(func, event, success_status=200):
     except AttributeError:
         payload = {"error": "Not found"}
         status = 404
+    except InvalidUsername as e:
+        payload = {"error": str(e)}
+        status = 404
+    except NoRecentTweets as e:
+        payload = {"error": str(e)}
+        status = 204
     except Exception as e:
         print(f"ERROR - unknown exception: {type(e)} - {str(e)}")
         payload = {"error": "Unknown error"}
