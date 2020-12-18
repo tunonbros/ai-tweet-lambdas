@@ -11,76 +11,23 @@ Globals:
     Timeout: 20
 
 Resources:
-  GenerateTweetFunction:
+  MainFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: functions/
-      Handler: generate-tweet.post
+      Handler: main.entrypoint
       Runtime: python3.8
       Events:
         GenerateTweet:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /ai-tweet-generate
+            Path: /{proxy+}
             Method: post
       Environment:
         Variables:
           DOMAIN: a
           OPENAI_KEY: a
           TWITTER_BEARER_TOKEN: a
-          DB_USER: a
-          DB_PASSWORD: a
-          DB_HOST: a
-  SharedGetFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: functions/
-      Handler: shared.get
-      Runtime: python3.8
-      Events:
-        GenerateTweet:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /shared/{tweetId}
-            Method: get
-      Environment:
-        Variables:
-          DOMAIN: a
-          DB_USER: a
-          DB_PASSWORD: a
-          DB_HOST: a
-  SharedPostFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: functions/
-      Handler: shared.post
-      Runtime: python3.8
-      Events:
-        GenerateTweet:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /shared
-            Method: post
-      Environment:
-        Variables:
-          DOMAIN: a
-          DB_USER: a
-          DB_PASSWORD: a
-          DB_HOST: a
-  DBHandlerFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: functions/
-      Handler: handle_db.lambda_handler
-      Runtime: python3.8
-      Events:
-        GenerateTweet:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-          Properties:
-            Path: /dbhandler
-            Method: get
-      Environment:
-        Variables:
           DB_USER: a
           DB_PASSWORD: a
           DB_HOST: a
@@ -92,18 +39,9 @@ Outputs:
   GenerateTweetApi:
     Description: "API Gateway endpoint URL for Prod stage for generate tweet function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  GenerateTweetFunction:
-    Description: "Generate tweet Lambda Function ARN"
-    Value: !GetAtt GenerateTweetFunction.Arn
   GenerateTweetFunctionIamRole:
     Description: "Implicit IAM Role created for generate tweet function"
     Value: !GetAtt GenerateTweetFunctionRole.Arn
-  SharedGetFunction:
-    Description: "Get shared tweet Lambda Function ARN"
-    Value: !GetAtt SharedGetFunction.Arn
-  SharedPostFunction:
-    Description: "Post shared tweet Lambda Function ARN"
-    Value: !GetAtt SharedPostFunction.Arn
-  DBHandlerFunction:
-    Description: "Create tables"
-    Value: !GetAtt DBHandlerFunction.Arn
+  MainFunction:
+    Description: "Generate tweet Lambda Function ARN"
+    Value: !GetAtt MainFunction.Arn

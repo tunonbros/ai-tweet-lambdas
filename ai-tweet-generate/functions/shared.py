@@ -3,17 +3,16 @@ from libs import handler
 from libs.db import tweets_db
 
 
-def get_shared(event):
-    tweet_id = event['pathParameters']['tweetId']
-    tweet = tweets_db.get_tweet(tweet_id)
+def get_shared(event, params):
+    tweet = tweets_db.get_tweet(params[0])
 
     # Don't return everything from database, just these keys
     return_keys = ['tweet', 'username']
     return handler.serialize(tweet.items(), return_keys)
 
 
-def get(event, context):
-    payload, status = handler.wrap_function(get_shared, event)
+def get(event, params):
+    payload, status = handler.wrap_function(get_shared, event, params)
 
     return {
         'statusCode': status,

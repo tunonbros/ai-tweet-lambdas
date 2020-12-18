@@ -4,4 +4,4 @@
 [build_definitions.1b9b297f-f687-4428-8eda-5c4ee526346a]
 codeuri = "functions/"
 runtime = "python3.8"
-functions = ["GenerateTweetFunction", "SharedGetFunction", "SharedPostFunction", "DBHandlerFunction"]
+functions = ["MainFunction"]

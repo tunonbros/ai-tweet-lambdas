@@ -5,7 +5,7 @@ from libs import twitter
 from libs.db import tweets_db
 
 
-def generate_tweet(event):
+def generate_tweet(event, params):
     body = json.loads(event['body'])
     username = twitter.strip_username(body['username'])
 
@@ -29,8 +29,8 @@ def generate_tweet(event):
     }
 
 
-def post(event, context):
-    payload, status = handler.wrap_function(generate_tweet, event, 201)
+def post(event, params):
+    payload, status = handler.wrap_function(generate_tweet, event, params, 201)
 
     return {
         'statusCode': status,

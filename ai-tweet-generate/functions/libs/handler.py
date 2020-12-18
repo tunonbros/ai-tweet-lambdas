@@ -3,9 +3,9 @@ import os
 from .twitter import InvalidUsername, NoRecentTweets
 
 
-def wrap_function(func, event, success_status=200):
+def wrap_function(func, event, params, success_status=200):
     try:
-        payload = func(event)
+        payload = func(event, params)
         status = success_status
     except (ValueError, TypeError):
         payload = {"error": "Invalid format"}
